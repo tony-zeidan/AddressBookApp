@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head >
+  <meta charset="utf-8">
+  <title>AddressBook - Main</title>
+
+  <!-- Custom styles for this template -->
+  <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
+</head>
+<header>
+  <h1>Address Book App</h1>
+  <p>Contacts app for students in SYSC 4806</p>
+</header>
+<body>
+<div class="content-div">
+  <table class="layout-table">
+    <tbody class="layout-tbody">
+    <tr class="layout-row">
+      <td class="nav-td">
+        <nav class="syscbook-navbar">
+          <ul>
+            <li><a id="active-item" href="/">Home</a></li>
+            <li><a href="./buddy">Contacts</a></li>
+            <li><a href="./book">Contact Books</a></li>
+          </ul>
+        </nav>
+      </td>
+      <td class="main-td">
+        <main>
+          <section id="post-form-section">
+          </section>
+        </main>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

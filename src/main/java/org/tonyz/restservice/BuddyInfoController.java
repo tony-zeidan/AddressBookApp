@@ -5,12 +5,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.tonyz.BuddyInfo;
 import org.tonyz.BuddyInfoRepository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("/buddy")
 public class BuddyInfoController {
 
     @Autowired
@@ -20,23 +24,18 @@ public class BuddyInfoController {
         this.buddyRepo = buddyRepo;
     }
 
-    @GetMapping("/buddy")
+    @GetMapping("")
     public String getBuddies(Model model) {
-        model.addAttribute("buddies", buddyRepo.findAll().toString());
+        model.addAttribute("buddies", buddyRepo.findAll());
         return "buddies";
     }
 
-    @GetMapping(value="/buddy/{id}")
-    public String getBuddy(@PathVariable Long id, Model model) {
-        Optional<BuddyInfo> bud = buddyRepo.findById(id);
-        BuddyInfo buddy = bud.orElseGet(null);
-        if (bud.isPresent()) {
-            model.addAttribute("name", buddy.getName());
-            model.addAttribute("phoneNumber", buddy.getPhoneNumber());
-        } else {
-            model.addAttribute("name", "UNKNOWN");
-            model.addAttribute("phoneNumber", "UNKNOWN");
-        }
-        return "buddy";
+    @GetMapping(value="/{id}")
+    public String getBuddy(@PathVariable String id, Model model) {
+        BuddyInfo bud = buddyRepo.findById(Long.parseLong(id));
+        List<BuddyInfo> budList = new ArrayList<>();
+        budList.add(bud);
+        model.addAttribute("buddies", budList);
+        return "buddies";
     }
 }
