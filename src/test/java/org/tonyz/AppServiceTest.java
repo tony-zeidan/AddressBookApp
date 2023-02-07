@@ -1,3 +1,5 @@
+package org.tonyz;
+
 import static org.hamcrest.Matchers.containsString;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -13,20 +15,20 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.tonyz.restservice.AppRestController;
 
-/*
-@WebMvcTest(AppRestController.class)
-public class WebMockTest {
+
+@WebMvcTest
+public class AppServiceTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private GreetingService service;
+    private AppRestController postController;
 
     @Test
     public void greetingShouldReturnMessageFromService() throws Exception {
-        when(service.greet()).thenReturn("Hello, Mock");
-        this.mockMvc.perform(get("/greeting")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("Hello, Mock")));
+        when(postController.addBuddy("1", "Tony", "6136080124")).thenReturn("Hello, Mock");
+        this.mockMvc.perform(get("/buddy")).andDo(print()).andExpect(status().isOk())
+                .andExpect(content().string(containsString("Tony")));
     }
-}*/
+}

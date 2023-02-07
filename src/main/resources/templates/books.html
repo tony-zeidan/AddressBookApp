@@ -31,7 +31,7 @@
                     <section id="post-form-section">
                         <h1>Contact books in the system are as follows!</h1>
                         <th:block th:remove="tag" th:each="book:${books}" th:with="count=${#lists.size(book.getBuddies())}">
-                            <p th:text="${book.getId()}">BOOK ID: </p>
+                            <p th:text="'BOOK ID: ' + ${book.getId()}"></p>
                             <ul>
                                 <li th:each="buddy: ${book.getBuddies()}" th:text="${buddy.toString()}"></li>
                             </ul>
