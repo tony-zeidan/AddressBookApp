@@ -23,7 +23,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@WebMvcTest
 public class AppLocalIntegrationTest {
 
     @Autowired
