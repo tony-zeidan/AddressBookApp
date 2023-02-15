@@ -9,6 +9,8 @@ import org.tonyz.AddressBookRepository;
 import org.tonyz.BuddyInfo;
 import org.tonyz.BuddyInfoRepository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -26,10 +28,10 @@ public class AppRestController {
     }
 
     @PostMapping(value="/book")
-    public String addBook() {
+    public ResponseEntity<AddressBook> addBook() {
         AddressBook book = new AddressBook();
         bookRepo.save(book);
-        return "book saved";
+        return new ResponseEntity<AddressBook>(book, HttpStatus.CREATED);
     }
 
     @PostMapping(value="/buddy")
@@ -72,4 +74,16 @@ public class AppRestController {
         buddyRepo.delete(buddy);
         return "buddy deleted";
     }*/
+
+    @DeleteMapping(value="/book")
+    public ResponseEntity<AddressBook> removeBook(@RequestBody Map<String, String> json) {
+        AddressBook book = bookRepo.findById(Long.parseLong(json.get("id")));
+        List<BuddyInfo> buddies = new ArrayList<>(book.getBuddies());
+        for (BuddyInfo bud: buddies) {
+            book.removeBuddy(bud);
+            buddyRepo.delete(bud);
+        }
+        bookRepo.delete(book);
+        return new ResponseEntity<AddressBook>(book, HttpStatus.OK);
+    }
 }

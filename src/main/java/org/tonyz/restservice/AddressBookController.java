@@ -39,10 +39,17 @@ public class AddressBookController {
         return "books";
     }
 
-    @GetMapping(value="/addbook")
+    @GetMapping(value="/create")
     public String addBook() {
         AddressBook bk = new AddressBook();
         bookRepo.save(bk);
-        return "index";
+        return "";
+    }
+
+    @GetMapping(value="/delete")
+    public String deleteBook() {
+        AddressBook bk = new AddressBook();
+        bookRepo.save(bk);
+        return "deletebook";
     }
 }

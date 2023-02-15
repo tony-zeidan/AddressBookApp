@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head >
     <meta charset="utf-8">
-    <title>AddressBook - GET Contacts</title>
+    <title>AddressBook - CREATE Book</title>
 
     <!-- Custom styles for this template -->
     <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
@@ -10,7 +10,7 @@
 <header>
     <h1>Address Book App</h1>
     <p>Contacts app for students in SYSC 4806</p>
-    <p>Retrieved contacts</p>
+    <p>Create a new contact book</p>
 </header>
 <body>
 <div class="content-div">
@@ -21,11 +21,11 @@
                 <nav class="syscbook-navbar">
                     <ul>
                         <li><a href="/">Home</a></li>
-                        <li><a id="active-item" href="./buddy">Contacts</a></li>
+                        <li><a href="/buddy">Contacts</a></li>
                         <li><a href="/buddy/add">Add Contact</a></li>
                         <li><a href="/buddy/delete">Delete Contact</a></li>
                         <li><a href="/book">Contact Books</a></li>
-                        <li><a href="/book/create">Create Book</a></li>
+                        <li><a id="active-item" href="/book/create">Create Book</a></li>
                         <li><a href="/book/delete">Delete Book</a></li>
                     </ul>
                 </nav>
@@ -33,24 +33,12 @@
             <td class="main-td">
                 <main>
                     <section id="post-form-section">
-                        <h1>Contacts in the system are as follows!</h1>
-                        <table class="query-table">
-                            <thead>
-                            <tr>
-                                <th> Name </th>
-                                <th> Phone Number </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:if="${#lists.isEmpty(buddies)}">
-                                <td colspan="2"> No Contacts Available </td>
-                            </tr>
-                            <tr th:each="buddy : ${buddies}">
-                                <td class="query-td" th:text="${buddy.getName()}"></td>
-                                <td class="query-td" th:text="${buddy.getPhoneNumber()}"></td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <form action="/book" method="POST">
+                            <fieldset>
+                                <legend>Create a new book</legend>
+                                <input type="submit">
+                            </fieldset>
+                        </form>
                     </section>
                 </main>
             </td>
