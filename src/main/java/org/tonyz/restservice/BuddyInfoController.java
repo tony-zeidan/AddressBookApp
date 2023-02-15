@@ -39,13 +39,14 @@ public class BuddyInfoController {
         return "buddies";
     }
 
-    @GetMapping(value="/addbuddy")
+    @GetMapping(value="/add")
     public String addBuddy() {
-        return "redirect:/addbuddy";
+        System.out.println("CALLED ADD BUDDY");
+        return "addbuddy";
     }
 
-    @GetMapping(value="/deletebuddy")
+    @GetMapping(value="/delete")
     public String deleteBuddy() {
-        return "redirect:/deletebuddy";
+        return "deletebuddy";
     }
 }
