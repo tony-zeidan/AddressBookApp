@@ -31,10 +31,8 @@
             <td class="main-td">
                 <main>
                     <section id="post-form-section">
-                        <h1>Contact books in the system are as follows!</h1>
-                        <div th:if="${#lists.isEmpty(books)}">
-                            <p> No address books have been created in the system. </p>
-                        </div>
+                        <h1 th:if="${not #lists.isEmpty(books)}">Contact books in the system are as follows!</h1>
+                        <h1 th:if="${#lists.isEmpty(books)}"> No address books have been created in the system. </h1>
                         <th:block th:remove="tag" th:each="book:${books}" th:with="count=${#lists.size(book.getBuddies())}">
                             <p th:text="'BOOK ID: ' + ${book.getId()}"></p>
                             <div th:if="${#lists.isEmpty(book)}">
