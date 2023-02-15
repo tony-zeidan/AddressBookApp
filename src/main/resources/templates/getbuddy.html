@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head >
     <meta charset="utf-8">
-    <title>AddressBook - DELETE Book</title>
+    <title>AddressBook - ADD Contact</title>
 
     <!-- Custom styles for this template -->
     <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
@@ -10,7 +10,7 @@
 <header>
     <h1>Address Book App</h1>
     <p>Contacts app for students in SYSC 4806</p>
-    <p>Delete a contact book</p>
+    <p>Find a contact</p>
 </header>
 <body>
 <div class="content-div">
@@ -27,21 +27,24 @@
                         <li><a href="/getbuddy">Get Contact</a></li>
                         <li><a href="/getbooks">Contact Books</a></li>
                         <li><a href="/createbook">Create Book</a></li>
-                        <li><a id="active-item" href="/deletebook">Delete Book</a></li>
-                        <li><a href="/getbook">Get Book</a></li>
+                        <li><a href="/deletebook">Delete Book</a></li>
+                        <li><a id="active-item" href="/getbook">Get Book</a></li>
                     </ul>
                 </nav>
             </td>
             <td class="main-td">
                 <main>
                     <section id="post-form-section">
-                        <form action="/deletebook" method="post">
+                        <form action="/getbuddy" method="get">
                             <fieldset>
-                                <legend>Remove a contact book</legend>
-                                <label for="bookid">Book ID:</label>
-                                <input id="bookid" type="text" name="id">
+                                <legend>Get a book</legend>
+                                <label for="book_id">Book ID:</label>
+                                <input id="book_id" type="text" name="book_id"><br>
+                                <label for="buddy_id">Contact ID:</label>
+                                <input id="buddy_id" type="text" name="buddy_id"><br>
                                 <input type="submit">
                             </fieldset>
+
                         </form>
                     </section>
                 </main>

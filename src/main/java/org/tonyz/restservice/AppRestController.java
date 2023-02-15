@@ -65,7 +65,7 @@ public class AppRestController {
         buddyRepo.delete(buddy);
         return new ResponseEntity<BuddyInfo>(buddy, HttpStatus.OK);
     }*/
-    @DeleteMapping(value="/buddy")
+    @GetMapping(value="/buddydel")
     public ResponseEntity<BuddyInfo> removeBuddy(@RequestParam(name="book_id") String bookId, @RequestParam(name="buddy_id") String buddyId) {
         AddressBook book = bookRepo.findById(Long.parseLong(bookId));
         BuddyInfo buddy = buddyRepo.findById(Long.parseLong(buddyId));
@@ -75,7 +75,7 @@ public class AppRestController {
         return new ResponseEntity<BuddyInfo>(buddy, HttpStatus.OK);
     }
 
-    @DeleteMapping(value="/book")
+    @GetMapping(value="/bookdel")
     public ResponseEntity<AddressBook> removeBook(@RequestParam(name="id") String id) {
         AddressBook book = bookRepo.findById(Long.parseLong(id));
         List<BuddyInfo> buddies = new ArrayList<>(book.getBuddies());
