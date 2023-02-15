@@ -41,11 +41,11 @@ public class BuddyInfoController {
 
     @GetMapping(value="/addbuddy")
     public String addBuddy() {
-        return "addbuddy";
+        return "redirect:/addbuddy";
     }
 
     @GetMapping(value="/deletebuddy")
     public String deleteBuddy() {
-        return "deletebuddy";
+        return "redirect:/deletebuddy";
     }
 }
