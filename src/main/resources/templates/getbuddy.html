@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head >
     <meta charset="utf-8">
-    <title>AddressBook - ADD Contact</title>
+    <title>AddressBook - GET Contact</title>
 
     <!-- Custom styles for this template -->
     <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
@@ -24,18 +24,18 @@
                         <li><a href="/getbuddies">Contacts</a></li>
                         <li><a href="/addbuddy">Add Contact</a></li>
                         <li><a href="/deletebuddy">Delete Contact</a></li>
-                        <li><a href="/getbuddy">Get Contact</a></li>
+                        <li><a id="active-item" href="/getbuddy">Get Contact</a></li>
                         <li><a href="/getbooks">Contact Books</a></li>
                         <li><a href="/createbook">Create Book</a></li>
                         <li><a href="/deletebook">Delete Book</a></li>
-                        <li><a id="active-item" href="/getbook">Get Book</a></li>
+                        <li><a href="/getbook">Get Book</a></li>
                     </ul>
                 </nav>
             </td>
             <td class="main-td">
                 <main>
                     <section id="post-form-section">
-                        <form action="/getbuddy" method="get">
+                        <form action="/findbuddy" method="get">
                             <fieldset>
                                 <legend>Get a book</legend>
                                 <label for="book_id">Book ID:</label>
