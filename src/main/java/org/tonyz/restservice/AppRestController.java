@@ -56,7 +56,7 @@ public class AppRestController {
         return "buddy added";
     }*/
 
-    @DeleteMapping(value="/buddy")
+    /*
     public ResponseEntity<BuddyInfo> removeBuddy(@RequestBody Map<String, String> json) {
         AddressBook book = bookRepo.findById(Long.parseLong(json.get("book_id")));
         BuddyInfo buddy = buddyRepo.findById(Long.parseLong(json.get("buddy_id")));
@@ -64,20 +64,20 @@ public class AppRestController {
         bookRepo.save(book);
         buddyRepo.delete(buddy);
         return new ResponseEntity<BuddyInfo>(buddy, HttpStatus.OK);
-    }
-    /*
-    public String removeBuddy(@RequestParam(name="book_id") String bookId, @RequestParam(name="buddy_id") String buddyId) {
+    }*/
+    @DeleteMapping(value="/buddy")
+    public ResponseEntity<BuddyInfo> removeBuddy(@RequestParam(name="book_id") String bookId, @RequestParam(name="buddy_id") String buddyId) {
         AddressBook book = bookRepo.findById(Long.parseLong(bookId));
         BuddyInfo buddy = buddyRepo.findById(Long.parseLong(buddyId));
         book.removeBuddy(buddy);
         bookRepo.save(book);
         buddyRepo.delete(buddy);
-        return "buddy deleted";
-    }*/
+        return new ResponseEntity<BuddyInfo>(buddy, HttpStatus.OK);
+    }
 
     @DeleteMapping(value="/book")
-    public ResponseEntity<AddressBook> removeBook(@RequestBody Map<String, String> json) {
-        AddressBook book = bookRepo.findById(Long.parseLong(json.get("id")));
+    public ResponseEntity<AddressBook> removeBook(@RequestParam(name="id") String id) {
+        AddressBook book = bookRepo.findById(Long.parseLong(id));
         List<BuddyInfo> buddies = new ArrayList<>(book.getBuddies());
         for (BuddyInfo bud: buddies) {
             book.removeBuddy(bud);
