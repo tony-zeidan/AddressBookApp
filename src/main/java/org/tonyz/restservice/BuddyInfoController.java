@@ -38,4 +38,14 @@ public class BuddyInfoController {
         model.addAttribute("buddies", budList);
         return "buddies";
     }
+
+    @GetMapping(value="/addbuddy")
+    public String addBuddy() {
+        return "addbuddy";
+    }
+
+    @GetMapping(value="/deletebuddy")
+    public String deleteBuddy() {
+        return "deletebuddy";
+    }
 }

@@ -339,3 +339,39 @@ as a member of your GitHub repo (the GitHub handles for the TAs can be
 found on Brightspace in the “Course Details” section). The TA will check that
 you have correctly set up the GitHub Action for CI, and that there are a few
 integration tests that are being run by CI.
+
+## Lab 6 Guidelines
+Now it’s time to provide a functional frontend for your AddressBook app!
+**Part 1**: the more traditional client-side
+(note: you may have already done some of this in past labs!)
+Using HTML static pages and/or template views (with Thymeleaf for
+example), create web pages and/or forms to allow the user to create an
+address book, to populate it with buddy infos, and to list the current content
+of your address book. This means that you need to provide controllers on
+the server-side to handle the client requests and to render the relevant
+views. This tutorial may again be helpful.
+
+**Part 2**: the Single Page Application (SPA) version
+(note: again, you may already have done some of this already)
+If you have provided Spring Data repositories for your AddressBook and
+BuddyInfo JPA models, (see this tutorial for example), then you already have
+a set of RESTful controllers for your application.
+The JSON objects returned by these controllers can be used by a Single Page Application on the client
+side.
+
+So now you should be able to write the JavaScript functions that will make
+an AJAX call to the appropriate controller on the server, with a
+corresponding JavaScript callback function that will use the returned JSON
+response to modify and render the current HTML page. These functions can
+then be registered to the relevant submit action (a button press or other).
+This tutorial may or may not prove useful.
+
+To keep things DRY, the controllers you wrote in Part 1 should probably just be delegating to
+the RESTful ones. The only added value should be to select and populate the view to render.
+
+This registration process should be done on load time. This way, if the
+browser doesn’t support JavaScript, your client-side will still behave
+correctly as per Part 1. This is the “progressive” way!
+Done? Are you a frontend wizard now? Show your work to the TA! If you
+can’t, upload a link to your GitHub repo containing your work for Part 1
+and Part 2. 

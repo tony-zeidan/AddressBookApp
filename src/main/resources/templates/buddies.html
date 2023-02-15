@@ -22,6 +22,8 @@
                     <ul>
                         <li><a href="/">Home</a></li>
                         <li><a id="active-item" href="./buddy">Contacts</a></li>
+                        <li><a href="./addbuddy">Add Contact</a></li>
+                        <li><a href="./deletebuddy">Delete Contact</a></li>
                         <li><a href="./book">Contact Books</a></li>
                     </ul>
                 </nav>
@@ -29,7 +31,7 @@
             <td class="main-td">
                 <main>
                     <section id="post-form-section">
-                        <h1>Buddies in the system are as follows!</h1>
+                        <h1>Contacts in the system are as follows!</h1>
                         <table class="query-table">
                             <thead>
                             <tr>
@@ -39,7 +41,7 @@
                             </thead>
                             <tbody>
                             <tr th:if="${#lists.isEmpty(buddies)}">
-                                <td colspan="2"> No Books Available </td>
+                                <td colspan="2"> No Contacts Available </td>
                             </tr>
                             <tr th:each="buddy : ${buddies}">
                                 <td class="query-td" th:text="${buddy.getName()}"></td>

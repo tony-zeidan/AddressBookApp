@@ -38,4 +38,11 @@ public class AddressBookController {
         model.addAttribute("books", bkList);
         return "books";
     }
+
+    @GetMapping(value="/addbook")
+    public String addBook() {
+        AddressBook bk = new AddressBook();
+        bookRepo.save(bk);
+        return "index";
+    }
 }
