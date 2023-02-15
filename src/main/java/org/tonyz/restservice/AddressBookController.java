@@ -43,7 +43,7 @@ public class AddressBookController {
     public String addBook() {
         AddressBook bk = new AddressBook();
         bookRepo.save(bk);
-        return "";
+        return "addbook";
     }
 
     @GetMapping(value="/delete")
